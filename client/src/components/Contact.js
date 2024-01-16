@@ -10,7 +10,7 @@ export default function Contact() {
     text: "",
     email: "",
     phone: "",
-    work: "",
+    
   });
 
   const handleInputs = (e) => {
@@ -21,7 +21,7 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { name, text, email, phone, work } = user;
+    const { name, text, email, phone} = user;
 
     try {
       const res = await fetch("/contact", {
@@ -33,7 +33,6 @@ export default function Contact() {
           name,
           text,
           email,
-          work,
           phone,
         }),
       });
@@ -95,17 +94,7 @@ export default function Contact() {
                     onChange={handleInputs}
                   />
                 </div>
-                <div className="form-group">
-                  <label htmlFor="work"></label>
-                  <input
-                    type="text"
-                    name="work"
-                    id="work"
-                    placeholder="Enter Your Work"
-                    value={user.work}
-                    onChange={handleInputs}
-                  />
-                </div>
+                
                 <div className="pt-0 mb-3 form-group">
                   <textarea
                     placeholder="Your message"
