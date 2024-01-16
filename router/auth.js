@@ -11,9 +11,9 @@ router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
 router.post("/contact", async (req, res) => {
-  const { name, email, phone, message } = req.body;
+  const { name, email, phone, text} = req.body;
 
-  if (!name || !email || !phone || !message) {
+  if (!name || !email || !phone || !text) {
     return res.status(422).json({ error: "Please fill in all the fields" });
   }
 
@@ -23,7 +23,7 @@ router.post("/contact", async (req, res) => {
       return res.status(420).json({ error: "Email already exists" });
     }
 
-    const user = new User({ name, email, phone, message });
+    const user = new User({ name, email, phone, text });
 
     const saveMethod = await user.save();
     if (saveMethod) {
